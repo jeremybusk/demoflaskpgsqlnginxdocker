@@ -1,0 +1,35 @@
+{% extends 'base.html' %}
+{% from 'bootstrap/form.html' import render_form, render_field %}
+
+{% block content %}
+  <script>
+    function showToken() {
+      var text = createToken(32);
+        $('#randomToken').text(text);
+    };
+  </script>
+  <h3 class="text-center">Access Tokens</h3>
+  <form method="post">
+    <button type="submit" name="submit_button" value="Add" class="btn btn-sm btn-secondary">Add Access Token</button>
+  </form>
+  <br>
+
+  {% for accesstoken in accesstokens %}
+    <form method="post">
+      <div class="form-row md-form">
+        <div class="col">
+          <input type="text" name="l_access_token" class="form-control" value="{{accesstoken.access_token}}" readonly>
+        </div>
+        <div class="col">
+          <input type="text" name="l_note" id='l_note-{{accesstoken.id}}' class="form-control" value="{{accesstoken.note}}">
+          <label for="l_note-{{accesstoken.id}}">Note</label>
+        </div>
+        <div class="col">
+          <button type="submit" name="submit_button" value="Update" class="btn btn-sm btn-secondary">Update</button>
+          <button type="submit" name="submit_button" value="Delete" class="btn btn-sm btn-secondary">Delete</button>
+          <input type="hidden" name="l_id" class="form-control" value="{{accesstoken.id}}">
+        </div>
+      </div>
+    </form>
+  {% endfor %}
+{% endblock %}

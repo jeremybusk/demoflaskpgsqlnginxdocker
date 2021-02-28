@@ -1,0 +1,53 @@
+{% extends 'base.html' %}
+{% from 'bootstrap/form.html' import render_form, render_field %}
+
+{% block content %}
+    <h1>Register</h1>
+    <p>Please install <a href="https://freeotp.github.io/">FreeOTP</a> or another one-time-password app on your smartphone first. You will need it to complete your registration by using your camera to scan a QR Code in order to save a password token.
+    <div>Download FreeOTP <a href="https://itunes.apple.com/us/app/freeotp/id872559395">iTunes</a> | <a href="https://play.google.com/store/apps/details?id=org.fedorahosted.freeotp">Google Play</a></p>
+    </div>
+    <div>
+        <!--Maybe fixed? https://github.com/freeotp/freeotp-ios/issues/112 -->
+        If you have issues with Apple IOS using FreeOTP or Google Authenticator:</br>
+        Give <a href="https://itunes.apple.com/us/app/authenticator/id766157276">https://itunes.apple.com/us/app/authenticator/id766157276</a> a try.
+    </div>
+    <hr>
+    <div class="card mx-auto" style="width:20rem;margin:20px 0 24px 0">
+
+      <h5 class="card-header info-color white-text text-center py-4">
+        <strong>Register</strong>
+      </h5>
+
+      <div class="card-body px-lg-5 pt-0">
+        <form method="post" class="text-center" style="color: #757575;">
+          <div class="md-form">
+            <input id="username" name="username" type="email" class="form-control" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$" autocomplete="off" required>
+            <label for="username">Username/E-mail</label>
+          </div>
+          <div class="md-form">
+            <input id="password" name="password" type="password" class="form-control" pattern="(?=^.{12,}$)((?=.*\d)|(?=.*\W+))(?![.\n])(?=.*[A-Z])(?=.*[a-z]).*$" title="Requires upper/lowercase letter, number, and char like !@#$%_&." autocomplete="off" required>
+            <label for="password">Password</label>
+          </div>
+          <div class="md-form">
+            <input name="password_confirm" autocomplete="off" class="form-control" type="password" id="password_confirm" oninput="check(this)" required/>
+            <label for="password_confirm">Confirm Password</label>
+            <script language='javascript' type='text/javascript'>
+                function check(input) {
+                    if (input.value != document.getElementById('password').value) {
+                        input.setCustomValidity('Password Must be Matching.');
+                    } else {
+                        // input is valid -- reset the error message
+                        input.setCustomValidity('');
+                    }
+                }
+            </script>
+          </div>
+          <button name="submit_button" id="submit_button" class="btn btn-outline-info btn-rounded btn-block my-4 waves-effect z-depth-0" value="register" type="submit">Register</button>
+        </form>
+        <b>Please make sure cameras or indivduals can't see your screen before pressing the Register button as it will display a QR passcode for saving.</b>
+      </div>
+    </div>
+    <br>
+    <div class="color-block warning-color z-depth-2">
+    </div>
+{% endblock %}

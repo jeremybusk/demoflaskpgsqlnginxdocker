@@ -1,0 +1,26 @@
+{% extends 'base.html' %}
+{% from 'bootstrap/form.html' import render_form, render_field %}
+
+{% block content %}
+  <h3 class="text-center">DemoApp Containers</h3>
+
+  <div style="display: flex;">
+    <form method="post">
+      <button type="submit" name="submit_button" value="create_demoapp1_container" class="btn btn-sm btn-secondary">Create DemoApp Container</button>
+    </form>
+  </div>
+  <br>
+
+  <table class="table table-striped">
+    <tr>
+      <th>Name</th>
+      <th>Notes</th>
+    </tr>
+  {% for container in containers %}
+    <tr>
+      <td>{{container.name}}</td>
+      <td>{{container.note if container.note}}</td>
+    </tr>
+  {% endfor %}
+  </table>
+{% endblock %}

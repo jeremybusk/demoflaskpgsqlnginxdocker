@@ -1,0 +1,11 @@
+{% extends 'base.html' %}
+{% from 'bootstrap/form.html' import render_form, render_field %}
+
+{% block content %}
+    <h1>LDAP Directory Registration</h1>
+    <p>You will need a LDAP directory account first.</p>
+    <p>Get the registration key from an admin.</p>
+    <hr>
+    {{ render_form(form) }}
+   <br>
+{% endblock %}

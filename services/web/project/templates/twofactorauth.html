@@ -1,0 +1,14 @@
+{% extends 'base.html' %}
+{% from 'bootstrap/form.html' import render_form, render_field %}
+
+{% block content %}
+    <h1>Two Factor Authentication Secret QRCode</h1>
+    <p>Please start FreeOTP app on your smartphone and scan the QR Code below with it.</p>
+    <p><img id="qrcode" src="{{ url_for('qrcode') }}"></p>
+    <p>WARNING! If you click "Create New OTP Secret" make sure to scan new code as this action deletes your previous OTP secret and invalidates authentication mechanisms using the old secret.</p>
+    <form method="post">
+      <button type="submit" name="submit_button" value="update" class="btn btn-sm btn-secondary">Create New OTP Secret</button>
+    </form>
+
+{% endblock %}
+
