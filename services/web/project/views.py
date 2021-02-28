@@ -2,7 +2,7 @@ import base64
 import json
 import jwt
 import logging
-from systemd.journal import JournalHandler
+# from systemd.journal import JournalHandler
 import time
 from io import BytesIO
 from flask import render_template, redirect, url_for, flash, session, \
@@ -15,12 +15,12 @@ from flask_wtf import FlaskForm
 import os
 import psycopg2
 import pyqrcode
-from demoportal import app
-from demoportal.models import AccessToken, db, License, User, UserApi, \
+from project import app
+from project.models import AccessToken, db, License, User, UserApi, \
     Container, Key
 import redis
 from sqlalchemy.sql import text  # bind params - raw sql prevent injection.
-import demoportal.utils as utils
+import project.utils as utils
 import uuid
 from werkzeug.security import generate_password_hash
 from wtforms import StringField, PasswordField, SubmitField, BooleanField
@@ -231,7 +231,7 @@ def user_api_request_inc():
 
 def log_msg(msg):
     log = logging.getLogger('portalwall')
-    log.addHandler(JournalHandler())
+    # log.addHandler(JournalHandler())
     log.setLevel(logging.INFO)
     log.info(msg)
 

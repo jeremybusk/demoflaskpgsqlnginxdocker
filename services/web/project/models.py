@@ -9,7 +9,7 @@ from flask_sessionstore import Session
 from flask_sqlalchemy import SQLAlchemy
 import onetimepass
 import os
-from demoportal import app
+from project import app
 from werkzeug.security import generate_password_hash, check_password_hash
 
 db = SQLAlchemy(app)

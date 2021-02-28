@@ -21,6 +21,7 @@ pyjwt
 pypng
 pyyaml
 markupsafe
+# markupsafe==2.0.0rc1
 onetimepass
 psycopg2
 psycopg2-binary
@@ -29,7 +30,8 @@ redis
 requests
 six
 sqlalchemy
-systemd-python  # requires pkg-config libsystemd-dev
+# systemd-python  # requires pkg-config libsystemd-dev
+systemd  # requires pkg-config libsystemd-dev
 visitor
 werkzeug
 wheel

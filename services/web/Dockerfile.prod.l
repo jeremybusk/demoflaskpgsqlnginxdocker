@@ -3,9 +3,8 @@
 ###########
 
 # pull official base image
-FROM python:3.8.1-slim-buster as builder
-# FROM python:slim-buster as builder
-# FROM python:3.8.8-slim-buster as builder
+# FROM python:3.8.1-slim-buster as builder
+FROM python:slim-buster as builder
 
 # set work directory
 WORKDIR /usr/src/app
@@ -17,13 +16,7 @@ ENV PYTHONUNBUFFERED 1
 # install system dependencies
 RUN apt-get update && \
     apt-get install -y --no-install-recommends gcc && \
-    apt-get install -y libpq-dev python-dev python3-systemd && \
-    apt-get install -y libsystemd-dev libpq5 
-    # apt-get install -y libsystemd-dev build-essential
-    # apt-get install -y build-essential \
-    # libsystemd-journal-dev \
-    # libsystemd-daemon-dev \
-    # libsystemd-dev
+    apt-get install -y libpq-dev python-dev python3-systemd  # busk
 
 # lint
 RUN pip install --upgrade pip
@@ -45,9 +38,7 @@ RUN pip wheel --no-cache-dir --prefer-binary --wheel-dir /usr/src/app/wheels -r 
 #########
 
 # pull official base image
-# FROM python:3.8.1-slim-buster
-# FROM python:slim-buster
-FROM python:3.8.8-slim-buster
+FROM python:3.8.1-slim-buster
 
 # create directory for the app user
 RUN mkdir -p /home/app
@@ -63,7 +54,7 @@ RUN mkdir $APP_HOME
 WORKDIR $APP_HOME
 
 # install dependencies
-RUN apt-get update && apt-get install -y --no-install-recommends netcat libpq5
+RUN apt-get update && apt-get install -y --no-install-recommends netcat
 COPY --from=builder /usr/src/app/wheels /wheels
 COPY --from=builder /usr/src/app/requirements.txt .
 RUN pip install --upgrade pip
