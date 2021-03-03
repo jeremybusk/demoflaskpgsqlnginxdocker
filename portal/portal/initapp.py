@@ -10,12 +10,12 @@ from werkzeug.middleware.proxy_fix import ProxyFix
 # demoportal_config_file = f'{home_dir}/.democli.yaml'
 portal_config_file = f'config.yaml'
 if not isfile(portal_config_file):
-    sys.exit(f'E: Portal config file {demoportal_config_file} does not exist.')
+    sys.exit(f'E: Portal config file {portal_config_file} does not exist.')
 with open(portal_config_file, 'r') as stream:
     try:
         config = yaml.safe_load(stream)
     except Exception as e:
-        raise SystemExit(f"E: config issue {demoportal_config_file} of {e}")
+        raise SystemExit(f"E: config issue {portal_config_file} of {e}")
 
 app.wsgi_app = ProxyFix(app.wsgi_app)
 app.secret_key = 'dev'
