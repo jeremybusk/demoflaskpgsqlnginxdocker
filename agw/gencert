@@ -1,0 +1,1 @@
+sudo openssl req -x509 -nodes -days 730 -newkey rsa:4096 -keyout private/nginx-selfsigned.key -out certs/nginx-selfsigned.crt -subj "/C=US/ST=Utah/L=Lehi/O=Example Corp/OU=Testing/CN=example.io"

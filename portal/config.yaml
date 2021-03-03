@@ -1,0 +1,10 @@
+# This is just an example right now. Will change to yaml in future.
+# flask values are contained in config.py
+prod: 
+  authorized_domains: ['uvoo.io']
+  default_domain: 'uvoo.io'
+  ui_url: 'https://demoportal.uvoo.io'
+  db_host: 'localhost'
+  db_name: 'demoportal'
+  db_user: 'demoportal'
+  db_pass: 'demoportal1in'
